@@ -8,7 +8,9 @@ import { UserService } from '../services/user.service';
         CommonModule
     ],
     providers: [
-        UserService
+        // UserService,
+        {provide: UserService, useClass: UserService},
+        {provide: 'API_URL', useValue: 'http://localhost:4200'}
     ],
     declarations: []
 })
