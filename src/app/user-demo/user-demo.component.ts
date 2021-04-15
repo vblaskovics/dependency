@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { ConfigurableRandomService } from '../services/configurable-random.service';
 import { RandomService } from '../services/random.service';
 import { UserService } from '../services/user.service';
 
@@ -8,25 +9,26 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./user-demo.component.css'],
 })
 export class UserDemoComponent implements OnInit {
-  private userService: UserService;
   userName: string;
   randomMsg: string;
+  configuredRandomMsg: string;
 
   constructor(
-    userService: UserService,
+    private userService: UserService,
+    private configurableRandomService: ConfigurableRandomService,
     @Inject('API_URL') private apiUrl: string,
     @Inject('RANDOM') private randomService: RandomService
   ) {
-    this.userService = userService;
   }
 
   signIn(): void {
     this.userService.setUser({
       name: 'Peter',
     });
-    this.randomMsg = `My random is: ${this.randomService.getRandom()}`;
     console.log('API URL', this.apiUrl);
     this.userName = this.userService.getUser().name;
+    this.randomMsg = `My random is: ${this.randomService.getRandom()}`;
+    this.configuredRandomMsg = `My configured random is: ${this.configurableRandomService.getRandom()}`;
   }
 
   ngOnInit(): void {

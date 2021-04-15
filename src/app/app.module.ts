@@ -6,6 +6,7 @@ import { AnalyticsDemoModule } from './analytics-demo/analytics-demo.module';
 import { AppComponent } from './app.component';
 import { UserDemoComponent } from './user-demo/user-demo.component';
 import { AnalyticsDemoComponent } from './analytics-demo/analytics-demo.component';
+import { GeneratorService } from './services/generator.service';
 
 
 @NgModule({
